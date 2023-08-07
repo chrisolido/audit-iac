@@ -62,7 +62,7 @@ resource "aws_eip" "elastic_ip" {
 # NAT gateway
 resource "aws_nat_gateway" "nat_gateway" {
   depends_on = [
-    aws_subnet.private_subnets[*].id, count.index),
+    aws_subnet.private_subnets,
     aws_eip.elastic_ip,
   ]
   allocation_id = aws_eip.elastic_ip.id
