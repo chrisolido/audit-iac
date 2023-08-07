@@ -66,7 +66,7 @@ resource "aws_nat_gateway" "nat_gateway" {
     aws_eip.elastic_ip,
   ]
   allocation_id = aws_eip.elastic_ip.id
-  subnet_id     = aws_subnet.private_subnets[*].id, count.index)
+  subnet_id     = aws_subnet.private_subnets.subnet_id
 
   tags = {
     Name = "nat-gateway"
@@ -95,9 +95,9 @@ resource "aws_route_table" "NAT_route_table" {
 # associate route table to private subnet
 resource "aws_route_table_association" "associate_routetable_to_private_subnet" {
   depends_on = [
-    aws_subnet.private_subnet,
+    aws_subnet.private_subnets,
     aws_route_table.NAT_route_table,
   ]
-  subnet_id      = aws_subnet.private_subnet.id
+  subnet_id      = aws_subnet.private_subnets.id
   route_table_id = aws_route_table.NAT_route_table.id
 }
