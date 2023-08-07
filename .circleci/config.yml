@@ -24,7 +24,7 @@ jobs:
       - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
     steps:
       - attach_workspace:
-          at: ./terraform_setup
+          at: ./terraform_setup/.
       - run:
           name: terraform
           command: |
@@ -38,7 +38,7 @@ jobs:
       - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
     steps:
       - attach_workspace:
-          at: ./terraform_setup
+          at: ./terraform_setup/.
       - run:
           name: terraform create destroy plan
           command: |
@@ -53,7 +53,7 @@ jobs:
       - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
     steps:
       - attach_workspace:
-          at: ./terraform_setup
+          at: ./terraform_setup/.
       - run:
           name: terraform destroy
           command: |
