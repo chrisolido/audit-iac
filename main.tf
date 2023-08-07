@@ -62,11 +62,11 @@ resource "aws_eip" "elastic_ip" {
 # NAT gateway
 resource "aws_nat_gateway" "nat_gateway" {
   depends_on = [
-    aws_subnet.public_subnet,
+    aws_subnet.public_subnets,
     aws_eip.elastic_ip,
   ]
   allocation_id = aws_eip.elastic_ip.id
-  subnet_id     = aws_subnet.public_subnet.id
+  subnet_id     = aws_subnet.public_subnets.id
 
   tags = {
     Name = "nat-gateway"
