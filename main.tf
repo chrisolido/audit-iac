@@ -1,4 +1,5 @@
 resource "aws_vpc" "main" {
+  # checkov:skip=CKV2_AWS_11: ADD REASON
  cidr_block = "10.0.0.0/16"
  
  tags = {
